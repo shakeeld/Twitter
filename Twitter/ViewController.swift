@@ -9,6 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBAction func onLogInButton(sender: AnyObject) {
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
