@@ -1,18 +1,29 @@
 //
-//  LogInViewController.swift
+//  TweetsViewController.swift
 //  Twitter
 //
-//  Created by Shakeel Daswani on 2/22/16.
+//  Created by Shakeel Daswani on 2/27/16.
 //  Copyright © 2016 Shakeel Daswani. All rights reserved.
 //
 
 import UIKit
-import BDBOAuth1Manager
 
-class LogInViewController: UIViewController {
+class TweetsViewController: UIViewController {
+    
+    var tweets: [Tweet]!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        TwitterClient.sharedInstance.homeTimeLine({ (tweets:[Tweet]) -> () in
+            self.tweets = tweets
+            for tweet in tweets {
+                print(tweet.text)
+            }
+            }) { (error: NSError) -> () in
+                print(error.localizedDescription)
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -22,22 +33,13 @@ class LogInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    @IBAction func onLogInButton(sender: AnyObject) {
-        
-        TwitterClient.sharedInstance.login({ () -> () in
-            print("I've logged in!")
-            
-            self.performSegueWithIdentifier("loginSegue", sender: nil)
-            }) { (error: NSError) -> () in
-                print("Error: \(error.localizedDescription)")
-        }
-        
-        
     
+    @IBAction func onLogoutButton(sender: AnyObject) {
+        TwitterClient.sharedInstance.logout()
+        
     }
     
-    
+
     /*
     // MARK: - Navigation
 
