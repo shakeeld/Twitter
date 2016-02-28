@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 class TweetCell: UITableViewCell {
 
@@ -17,17 +18,23 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var tweetLabel: UILabel!
     @IBOutlet weak var retweetcountLabel: UILabel!
     @IBOutlet weak var favoritecountLabel: UILabel!
+    @IBOutlet weak var retweetButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton!
+    
     
     
     var tweet: Tweet! {
         didSet {
-       tweetLabel.text = tweet.text as? String
-        nameLabel.text = tweet.screenName
+        tweetLabel.text = tweet.text as? String
+        self.nameLabel.text = tweet.user?.screenname
+        self.usernameLabel.text = tweet.user?.name
         retweetcountLabel.text = "\(tweet.retweetCount)"
+        timestampLabel.text = "\(tweet.timeStamp)"
         favoritecountLabel.text = "\(tweet.favoritesCount)"
+        //profileImageView.setImageWithURL((tweet.user?.profileUrl)!)
+            
         }
     }
-    
     
     
     
@@ -39,6 +46,21 @@ class TweetCell: UITableViewCell {
         profileImageView.clipsToBounds = true
         
         
+    }
+    
+    @IBAction func retweetButton(sender: AnyObject) {
+        print("retweet clicked")
+        self.retweetButton.setImage(UIImage(named: "retweet-action-on-pressed"), forState: UIControlState.Normal)
+
+        self.retweetcountLabel.text = String(self.tweet.retweetCount + 1)
+    }
+    
+    
+    @IBAction func favoriteButton(sender: AnyObject) {
+        print("favorite clicked")
+        
+        self.favoriteButton.setImage(UIImage(named: "like-action-on-pressed"), forState: UIControlState.Normal)
+        self.favoritecountLabel.text = String(self.tweet.favoritesCount + 1)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

@@ -17,15 +17,17 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+     //   let refreshControl = UIRefreshControl()
+        
+    
+        
         
         tableView.delegate = self
         tableView.dataSource = self
-       // tableView.rowHeight = UITableViewAutomaticDimension
-     //   tableView.estimatedRowHeight = 120
+   // tableView.rowHeight = UITableViewAutomaticDimension
+     //  tableView.estimatedRowHeight = 120
         
         TwitterClient.sharedInstance.homeTimeLine({ (tweets:[Tweet]) -> () in
-            
-            
             self.tweets = tweets
             for tweet in tweets {
                 self.tableView.reloadData()
@@ -34,15 +36,45 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             }) { (error: NSError) -> () in
                 print(error.localizedDescription)
         }
+    }
+
 
         // Do any additional setup after loading the view.
-    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    /*
+    
+    func refreshControlAction(refreshControl: UIRefreshControl) {
+        
+        // ... Create the NSURLRequest (myRequest) ...
+        
+        // Configure session so that completion handler is executed on main UI thread
+        let session = NSURLSession(
+            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+            delegate:nil,
+            delegateQueue:NSOperationQueue.mainQueue()
+        )
+        
+        let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
+            completionHandler: { (data, response, error) in
+                
+                // ... Use the new data to update the data source ...
+                
+                // Reload the tableView now that there is new data
+                self.myTableView.reloadData()
+                
+                // Tell the refreshControl to stop spinning
+                refreshControl.endRefreshing()	
+        });
+        task.resume()
+    }
+    
+*/
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,6 +90,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetCell
             cell.tweet = tweets![indexPath.row]
       
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         
         return cell
         }
@@ -68,6 +101,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         TwitterClient.sharedInstance.logout()
         
     }
+    
+    
     
 
     /*
