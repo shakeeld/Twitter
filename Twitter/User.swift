@@ -69,7 +69,7 @@ class User: NSObject {
                 defaults.setObject(nil, forKey: "currentUserData")
             }
             
-            defaults.setObject(user, forKey: "currentUser")
+            //defaults.setObject(user, forKey: "currentUser")
             
             defaults.synchronize()
         }

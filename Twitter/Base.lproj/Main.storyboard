@@ -59,17 +59,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="137.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b2c-mn-jAu">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b2c-mn-jAu">
                                                     <rect key="frame" x="8" y="0.0" width="62" height="63"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="63" id="YTQ-Ua-ofq"/>
+                                                        <constraint firstAttribute="width" constant="62" id="aBt-j1-rnw"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tweet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEb-ac-eYz">
-                                                    <rect key="frame" x="78" y="19" width="228" height="83"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Tweet" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEb-ac-eYz">
+                                                    <rect key="frame" x="78" y="17" width="228" height="83"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Favorite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otB-Mo-sib">
-                                                    <rect key="frame" x="180" y="108" width="39" height="21"/>
+                                                    <rect key="frame" x="194" y="108" width="38.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -80,14 +84,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTj-2r-aVO">
-                                                    <rect key="frame" x="72" y="0.0" width="83" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timestamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqo-gs-mew">
-                                                    <rect key="frame" x="246" y="0.0" width="68" height="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" fixedFrame="YES" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTj-2r-aVO">
+                                                    <rect key="frame" x="78" y="0.0" width="83" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -98,7 +96,34 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timestamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqo-gs-mew">
+                                                    <rect key="frame" x="246" y="0.0" width="68" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Trn-I6-z3E">
+                                                    <rect key="frame" x="78" y="107" width="33" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="7"/>
+                                                    <state key="normal" backgroundImage="TwitterLogo_#55acee"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n4f-nK-JFR">
+                                                    <rect key="frame" x="23" y="107" width="33" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="7"/>
+                                                    <state key="normal" title="Reply"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwi-br-rRi">
+                                                    <rect key="frame" x="156" y="107" width="33" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                                    <state key="normal" backgroundImage="TwitterLogo_#55acee"/>
+                                                </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="b2c-mn-jAu" firstAttribute="leading" secondItem="bjF-ze-7wj" secondAttribute="leading" constant="8" id="TzB-f2-GkL"/>
+                                                <constraint firstItem="QEb-ac-eYz" firstAttribute="leading" secondItem="b2c-mn-jAu" secondAttribute="trailing" constant="8" id="Yfa-CZ-zPX"/>
+                                                <constraint firstAttribute="trailing" secondItem="QEb-ac-eYz" secondAttribute="trailing" constant="14" id="fAE-4M-7GX"/>
+                                                <constraint firstItem="b2c-mn-jAu" firstAttribute="top" secondItem="bjF-ze-7wj" secondAttribute="top" id="tOE-uC-4fG"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="favoritecountLabel" destination="otB-Mo-sib" id="D9g-2o-haT"/>
@@ -128,6 +153,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="bXF-FI-1ty" id="OMQ-I3-T7o"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XoB-t6-uu9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -152,4 +180,7 @@
             <point key="canvasLocation" x="654" y="294"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="TwitterLogo_#55acee" width="1687" height="1687"/>
+    </resources>
 </document>

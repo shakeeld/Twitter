@@ -19,10 +19,26 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var favoritecountLabel: UILabel!
     
     
+    var tweet: Tweet! {
+        didSet {
+       tweetLabel.text = tweet.text as? String
+        nameLabel.text = tweet.screenName
+        retweetcountLabel.text = "\(tweet.retweetCount)"
+        favoritecountLabel.text = "\(tweet.favoritesCount)"
+        }
+    }
+    
+    
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        profileImageView.layer.cornerRadius = 3
+        profileImageView.clipsToBounds = true
+        
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
