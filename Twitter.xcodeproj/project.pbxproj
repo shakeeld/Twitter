@@ -375,6 +375,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A92BD8995A30A04CCCBCD249 /* Pods-Twitter.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Twitter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shakeel.Twitter;
@@ -386,6 +387,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9153F2B5434AF352A6073886 /* Pods-Twitter.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Twitter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shakeel.Twitter;

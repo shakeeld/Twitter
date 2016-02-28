@@ -26,12 +26,12 @@ class TweetCell: UITableViewCell {
     var tweet: Tweet! {
         didSet {
         tweetLabel.text = tweet.text as? String
-        self.nameLabel.text = tweet.user?.screenname
-        self.usernameLabel.text = tweet.user?.name
+        self.nameLabel.text = tweet.user?.name
+        self.usernameLabel.text = "@\(tweet.user!.screenname!)"
         retweetcountLabel.text = "\(tweet.retweetCount)"
-        timestampLabel.text = "\(tweet.timeStamp)"
+        timestampLabel.text = "\(tweet!.timeStamp!)"
         favoritecountLabel.text = "\(tweet.favoritesCount)"
-        //profileImageView.setImageWithURL((tweet.user?.profileUrl)!)
+        profileImageView.setImageWithURL((tweet!.user!.profileUrl)!)
             
         }
     }
@@ -45,7 +45,14 @@ class TweetCell: UITableViewCell {
         profileImageView.layer.cornerRadius = 3
         profileImageView.clipsToBounds = true
         
+        nameLabel.preferredMaxLayoutWidth = nameLabel.frame.width
         
+        
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        nameLabel.preferredMaxLayoutWidth = nameLabel.frame.width
     }
     
     @IBAction func retweetButton(sender: AnyObject) {
