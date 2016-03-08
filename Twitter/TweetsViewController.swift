@@ -30,8 +30,9 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         TwitterClient.sharedInstance.homeTimeLine({ (tweets:[Tweet]) -> () in
             self.tweets = tweets
             for tweet in tweets {
-                self.tableView.reloadData()
+             //   self.tableView.reloadData()
                 print(tweet.text)
+                self.tableView.reloadData()
             }
             }) { (error: NSError) -> () in
                 print(error.localizedDescription)
@@ -99,11 +100,33 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBAction func onLogoutButton(sender: AnyObject) {
         TwitterClient.sharedInstance.logout()
-        
+         self.tableView.reloadData()
     }
     
     
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "details") {
+            
+       let cell = sender as! UITableViewCell
+       let indexPath = tableView.indexPathForCell(cell)
+       let tweet = tweets![indexPath!.row]
+       let detailViewController = segue.destinationViewController as! TweetInfoViewController
+        detailViewController.tweet = tweet
+            print("prepare for segue called")
+            
+        }
+        
+        if(segue.identifier == "profile") {
+            
+       let cell = sender as! UIButton
+          //let tweet = tweets![indexPath!.row]
+          //  let detailViewController = segue.destinationViewController as! TweetInfoViewController
+          //  detailViewController.tweet = tweet
+            print("prepare for segue called")
+            
+        }
+        
+    }
 
     /*
     // MARK: - Navigation

@@ -14,6 +14,7 @@ class User: NSObject {
     var screenname: String!
     var profileUrl: NSURL?
     var tagline: NSString?
+    var retweetCount: String?
     
     var dictionary: NSDictionary?
     
@@ -21,6 +22,8 @@ class User: NSObject {
         
         
         self.dictionary = dictionary
+        
+        retweetCount = dictionary["retweet_count"] as? String
         name = dictionary["name"] as? String
         screenname = dictionary["screen_name"] as? String
         let profileUrlString = dictionary["profile_image_url_https"] as? String

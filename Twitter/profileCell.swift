@@ -1,27 +1,26 @@
 //
-//  TweetCell.swift
+//  profileCell.swift
 //  Twitter
 //
-//  Created by Shakeel Daswani on 2/27/16.
+//  Created by Shakeel Daswani on 3/8/16.
 //  Copyright © 2016 Shakeel Daswani. All rights reserved.
 //
 
 import UIKit
 import AFNetworking
 
-class TweetCell: UITableViewCell {
-
-    @IBOutlet weak var profileImageView: UIImageView!
+class profileCell: UITableViewCell {
+    
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var tweetLabel: UILabel!
     @IBOutlet weak var retweetcountLabel: UILabel!
     @IBOutlet weak var favoritecountLabel: UILabel!
-    @IBOutlet weak var retweetButton: UIButton!
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var favoriteButton: UIButton!
-    
-    
+    @IBOutlet weak var retweetButton: UIButton!
     
     var tweet: Tweet! {
         didSet {
@@ -40,15 +39,13 @@ class TweetCell: UITableViewCell {
             if(tweet.retweeted == true) {
                 self.retweetButton.setImage(UIImage(named: "retweet-action-on-pressed"), forState: UIControlState.Normal)
             }
-                else {
+            else {
                 self.retweetButton.setImage(UIImage(named: "retweet-action"), forState: UIControlState.Normal)
             }
         }
     }
-    
-    
-    
-    
+
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -57,30 +54,6 @@ class TweetCell: UITableViewCell {
         
         nameLabel.preferredMaxLayoutWidth = nameLabel.frame.width
         
-        
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        nameLabel.preferredMaxLayoutWidth = nameLabel.frame.width
-    }
-    
-    @IBAction func retweetButton(sender: AnyObject) {
-        print("retweet clicked")
-        self.retweetButton.setImage(UIImage(named: "retweet-action-on-pressed"), forState: UIControlState.Normal)
-        tweet.retweeted = true
-        tweet.retweetCount += 1
-        self.retweetcountLabel.text = String(self.tweet.retweetCount)
-    }
-    
-    
-    @IBAction func favoriteButton(sender: AnyObject) {
-        print("favorite clicked")
-        
-        self.favoriteButton.setImage(UIImage(named: "like-action-on-pressed"), forState: UIControlState.Normal)
-        tweet.liked = true
-        tweet.favoritesCount = tweet.favoritesCount + 1
-        self.favoritecountLabel.text = String(self.tweet.favoritesCount)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
