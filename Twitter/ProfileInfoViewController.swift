@@ -12,24 +12,42 @@ class ProfileInfoViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var tableView: UITableView!
     
-    var user : User!
-    var tweets : [Tweet]?
+    var user : User?
+    
+    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var tweetCount: UILabel!
+    @IBOutlet weak var followingLabel: UILabel!
+    @IBOutlet weak var profileImage: UIImageView!
+    var tweets: [Tweet]?
+    @IBOutlet weak var followersLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+         profileImage.setImageWithURL(user!.profileUrl!)
+        tweetCount.text = String(user!.tweetCount)
+        followingLabel.text = "\(user!.following)"
+        followersLabel.text = "\(user!.followers)"
+        backgroundImage.setImageWithURL(user!.profileBackgroundUrl!)
+        
+         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 120
+        
+        
         
         tableView.delegate = self
         tableView.dataSource = self
         
         
-        TwitterClient.sharedInstance.userTimeLine(user.screenname, success: { (tweets:[Tweet]) -> () in
+      TwitterClient.sharedInstance.userTimeLine((user!.screenname!), success: { (tweets:[Tweet]) -> () in
             self.tweets = tweets
-            for tweet in tweets {
-                print(tweet.text)
+                print(self.tweets)
                 self.tableView.reloadData()
-            }
             }) { (error: NSError) -> () in
                 print(error.localizedDescription)
         }
+
 
         // Do any additional setup after loading the view.
     }
@@ -42,7 +60,7 @@ class ProfileInfoViewController: UIViewController, UITableViewDelegate, UITableV
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("profileCell", forIndexPath: indexPath) as! TweetCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetCell
         cell.tweet = tweets![indexPath.row]
         
         cell.selectionStyle = UITableViewCellSelectionStyle.None

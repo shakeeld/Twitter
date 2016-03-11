@@ -118,10 +118,14 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         
         if(segue.identifier == "profile") {
             
-       let cell = sender as! UIButton
+       let button = sender as! UIButton
+            let cell = button.superview?.superview as! UITableViewCell
           //let tweet = tweets![indexPath!.row]
-          //  let detailViewController = segue.destinationViewController as! TweetInfoViewController
+            let detailViewController = segue.destinationViewController as! ProfileInfoViewController
+            detailViewController.user = tweets![(tableView.indexPathForCell(cell)?.row)!].user
+            
           //  detailViewController.tweet = tweet
+//            
             print("prepare for segue called")
             
         }

@@ -10,11 +10,17 @@ import UIKit
 
 class User: NSObject {
     
+    
+    var user: User?
+    
     var name: String?
     var screenname: String!
     var profileUrl: NSURL?
     var tagline: NSString?
-    var retweetCount: String?
+    var tweetCount: Int = 0
+    var following: Int = 0
+    var followers: Int = 0
+    var profileBackgroundUrl: NSURL?
     
     var dictionary: NSDictionary?
     
@@ -23,7 +29,14 @@ class User: NSObject {
         
         self.dictionary = dictionary
         
-        retweetCount = dictionary["retweet_count"] as? String
+        tweetCount = (dictionary["statuses_count"] as? Int)!
+        following = (dictionary["friends_count"] as? Int)!
+        followers = (dictionary["followers_count"] as? Int)!
+        let profileBackgroundURlString = dictionary["profile_background_image_url_https"] as? String
+        if let profileBackgroundUrlString = profileBackgroundURlString {
+            profileBackgroundUrl = NSURL(string: profileBackgroundUrlString)
+        }
+        
         name = dictionary["name"] as? String
         screenname = dictionary["screen_name"] as? String
         let profileUrlString = dictionary["profile_image_url_https"] as? String

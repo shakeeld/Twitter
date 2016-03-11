@@ -16,6 +16,8 @@ class TweetInfoViewController: UIViewController {
     @IBOutlet weak var retweetLabel: UILabel!
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var tweetLabel: UILabel!
+    @IBOutlet weak var retweetButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     
     var tweet: Tweet!
@@ -33,6 +35,19 @@ class TweetInfoViewController: UIViewController {
         retweetLabel.text = "\(tweet.retweetCount)"
         likeLabel.text = "\(tweet.favoritesCount)"
         tweetLabel.text = tweet.text as? String
+        
+        if(tweet.liked == true) {
+            self.favoriteButton.setImage(UIImage(named: "like-action-on-pressed"), forState: UIControlState.Normal)
+        } else {
+            self.favoriteButton.setImage(UIImage(named: "like-action"), forState: UIControlState.Normal)
+        }
+        if(tweet.retweeted == true) {
+            self.retweetButton.setImage(UIImage(named: "retweet-action-on-pressed"), forState: UIControlState.Normal)
+        }
+        else {
+            self.retweetButton.setImage(UIImage(named: "retweet-action"), forState: UIControlState.Normal)
+        }
+    
 
         // Do any additional setup after loading the view.
     }
@@ -42,6 +57,28 @@ class TweetInfoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+  
+    @IBAction func retweetButton(sender: AnyObject) {
+        
+        print("retweet clicked")
+        self.retweetButton.setImage(UIImage(named: "retweet-action-on-pressed"), forState: UIControlState.Normal)
+        tweet.retweeted = true
+        tweet.retweetCount += 1
+        self.retweetLabel.text = String(self.tweet.retweetCount)
+    }
+    
+    
+    
+    @IBAction func favoriteButton(sender: AnyObject) {
+        
+        print("favorite clicked")
+        
+        self.favoriteButton.setImage(UIImage(named: "like-action-on-pressed"), forState: UIControlState.Normal)
+        tweet.liked = true
+        tweet.favoritesCount = tweet.favoritesCount + 1
+        self.likeLabel.text = String(self.tweet.favoritesCount)
+    }
 
     /*
     // MARK: - Navigation
